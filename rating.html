@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="star-rating-svg.css">
+</head>
+<body>
+
+
+    <div class="my-rating" disabled></div>
+    <span class="live-rating"></span>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="jquery.star-rating-svg.js"></script>
+    <script>
+    
+        
+    $(".my-rating").starRating({
+        // readOnly: true, // disable the star rating
+        totalStars: 5,
+        disableAfterRate: true,
+        emptyColor: '#ddf6f4',
+        hoverColor: '#27ae60',
+        activeColor: '#2ecc71', // ACTIVE COLOR
+        ratedColor: '#2ecc71', // COLOR AFTER CLICKED
+        initialRating: 4,
+        strokeWidth: 0,
+        useGradient: false,
+        
+        callback: function(currentRating, $el){
+            alert('rated ' + currentRating);
+            console.log('DOM element ', $el);
+        },
+
+        onHover: function(currentIndex, currentRating, $el){
+            $('.live-rating').text(currentIndex);
+        },
+
+        onLeave: function(currentIndex, currentRating, $el){
+            $('.live-rating').text(currentRating);
+        }
+    });
+
+    </script>
+</body>
+</html>
